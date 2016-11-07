@@ -152,7 +152,7 @@ angular.module('registration').component('registration', {
               $location.path('/');
             }
             else {
-              alert('Sorry, try after some time');
+              alert('Please try after some time. Error - '+res.data.err);
             }
           });
         }

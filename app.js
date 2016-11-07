@@ -58,6 +58,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.post('/login',passportauthhelper.login);
+app.post('/logger',express.bodyParser(),loggerRoute.write);
 app.get('/getAdvertisementsList4',advertisementsList.getAdvertisementsList4);
 app.post('/registration2',express.bodyParser(),registration.registerNewUser2);
 app.post('/advertisement2',express.bodyParser(),advertisement.submitAdvertisement2);

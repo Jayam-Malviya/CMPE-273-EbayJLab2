@@ -27,7 +27,8 @@ angular.module('transactions').component('transactions', {
           transactionsCtrl.transactions = res.data.res[0].item;
         }
         else {
-          alert('Sorry, try after some time');
+          alert('Please try after some time. Error - '+res.data.err);
+
         }
       });
 
@@ -39,7 +40,7 @@ angular.module('transactions').component('transactions', {
           transactionsCtrl.bids = res.data.res;
         }
         else {
-          alert('Sorry, try after some time');
+          alert('Please try after some time. Error - '+res.data.err);
         }
       });
 

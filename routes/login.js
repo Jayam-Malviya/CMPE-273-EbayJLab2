@@ -22,6 +22,10 @@ module.exports.logoutUser2  =function(req,res) {
 }
 
 module.exports.getLoggedInUserProfile2 = function(req,res) {
+
+  if(!req.user){
+    res.send({});
+  }
   var msg_payload = {
     payload: {
       email: req.user.username

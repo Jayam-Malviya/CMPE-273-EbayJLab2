@@ -94,7 +94,7 @@ angular.module('advertisement').component('advertisement', {
               $location.path('/advertisementslist');
             }
             else {
-              alert('Sorry, try after some time');
+              alert('Please try after some time. Error - '+res.data.err);
             }
           });
         }

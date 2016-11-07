@@ -30,18 +30,26 @@ angular.module('advertisementslist').component('advertisementslist',{
       }
 		});
 
-		var movedin = false;
-		$scope.hoverIn =function(){
-			var msg = 'Browsing the advertisement list';
-			movedin = true;
-			// $scope.log(msg);
-		};
+    this.movedin = false;
+    $scope.hoverIn = function () {
+      var msg = 'Browsing the advertising list';
+      movedin = true;
+      $http({
+        method: 'POST',
+        url: '/logger',
+        data: {
+          text: msg
+        }
+      }).then(function (res) {
+        //console.log('sent');
+      });
+    };
 
-		$scope.hoverOut =function(){
-			movedin = false;
-		};
-		
-		$scope.log = function(msg){
+  $scope.hoverOut = function () {
+      movedin = false;
+    };
+
+    $scope.log = function(msg){
 			$http({
 				method:'POST',
 				url:'/logger',
@@ -69,6 +77,7 @@ angular.module('advertisementslist').component('advertisementslist',{
 				console.log(data);
 				alert('Item added to your cart, use show cart.')
 			}).error(function(error){
+          alert('Please try after some time. Error - '+res.data.err);
 			});
 		};
 	}]

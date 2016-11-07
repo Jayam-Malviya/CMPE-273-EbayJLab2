@@ -103,7 +103,7 @@ angular.module('cart').component('cart', {
 					$scope.cart = data.res[0].item;
 					$scope.totalAmount = data.amount;
 				}).error(function (error) {
-					console.log('bad habbit!!');
+					alert('Please try after some time. Error - '+res.data.err);
 				});
 			}
 		}]

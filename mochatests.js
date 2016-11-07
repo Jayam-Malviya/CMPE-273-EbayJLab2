@@ -51,29 +51,29 @@ describe('BidsListObject',function(){
 			.expect("Content-type",/json/)
 			.expect(200)
 			.end(function(err,res){
-				console.log('nnnnnnnnnnnnnnnnnn',res.text
-        );/*
-				console.log('nnnnnnnnnnnnnnnnnn',res.text.length);/*
-			  res.status.should.equal(200);
-				var text = JSON.parse(res.text);
-				text[1].id.should.equal(4);
-				text[1].name.should.equal('Woodland Shoes');
-				text[1].description.should.equal('pair of wood land shoes');
-				text[1].seller.should.equal('qa@email.com');
-				text[1].bidamount.should.equal(2);
-				text[1].quantity.should.equal(1);
-				text[1].bidder.should.equal("q");*/
-				done();			
+				var body = JSON.parse(res.text);
+        console.log('///////////////////////////'+ res.text);
+        console.log('BBBBBBBBBBBBBBBB'+ body.res[0]._id);
+        console.log('BBBBBBBBBBBBBBBB'+ body.res[0].name);
+        console.log('BBBBBBBBBBBBBBBB'+ body.res[0].description);
+        console.log('BBBBBBBBBBBBBBBB'+ body.res[0].seller);
+        console.log('BBBBBBBBBBBBBBBB'+ body.res[0].bidder);
+        body.res[0]._id.should.equal("581d44851871bb1bd36529cc");
+        body.res[0].name.should.equal("Rolex Watch");
+        body.res[0].description.should.equal("Vintage Classical Rolex Watch");
+        body.res[0].seller.should.equal("Rolex Inc.");
+        body.res[0].bidder.should.equal("w");
+				done();
 			});
 		});
 	});
 });
 
-/*describe('UserProfile',function(){
+describe('UserProfile',function(){
 	describe('#getUserProfile()',function(){
 		it('should return empty if the user is not logged in ',function(done){
 			server
-			.get("/getLoggedInUserProfile")
+			.get("/getLoggedInUserProfile2")
 			.expect("Content-type",/json/)
 			.expect(200) 
 			.end(function(err,res){
@@ -93,16 +93,20 @@ describe('Login', function(){
 		supertest(app)
 		.post('/login')
 		.send({
-			email: 'q',
-			password: 'q'
+			email: 'w',
+			password: 'w'
 		})
 		.end(function (err, res) {
-			if (err) { return done(err); }
-			var text = JSON.parse(res.text);
-			text.Status.should.equal('OK');
+			if (err) {
+			 return done(err);
+			}
+      console.log('Http Status Code should Be 200 - '+res.statusCode);
+      res.statusCode.should.equal(200);
+      // var text = JSON.parse(res);
+      // console.log('RRRRRRRRRRRRRRRRRR'+text);
+			// text.Status.should.equal('OK');
 			done();
 		});
 
 	});	
 });
-*/

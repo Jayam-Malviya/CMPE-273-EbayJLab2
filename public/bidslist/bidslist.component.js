@@ -18,6 +18,27 @@ angular.module('bidslist').component('bidslist', {
 				}
 			});
 
+
+			this.movedin = false;
+			$scope.hoverIn = function () {
+				var msg = 'Browsing the Bids list';
+				movedin = true;
+				$http({
+					method: 'POST',
+					url: '/logger',
+					data: {
+						text: msg
+					}
+				}).then(function (res) {
+					//console.log('sent');
+				});
+			};
+
+			$scope.hoverOut = function () {
+				movedin = false;
+			};
+
+
 			var bidsListCtrl = this;
 			$http({
 				method: 'GET',
